@@ -2,6 +2,7 @@ body{
     background-color: #414142;
 }
 
+
 .banner {
     background-color: #414142;
 }
@@ -52,6 +53,7 @@ img {
 
 .newsfeed{
   border: 2px solid #fff;
+  padding: 5px;
 }
 
 .timeline{
