@@ -2,6 +2,8 @@ body{
     background-color: #414142;
     cursor: url('../img/cursor.png'),auto;
     width: 100vw; 
+    font-family: 'Agdasima', sans-serif;
+    font-size: 25px;
 }
 
 a:hover{
@@ -15,6 +17,10 @@ a:hover{
 img {
     width: auto;
     height: 20vh;
+}
+
+h2{
+  font-family: 'Broadway', sans-serif;
 }
 
 
@@ -40,13 +46,13 @@ img {
 }
 
 .origin{
-  height: 35vh;
+  height: 50vh;
   padding: 10px;
 }
 
 .origin-video{
   border: 2px solid #fff;
-  height: 35vh;
+  height: 50vh;
 }
 
 .newsfeed {
