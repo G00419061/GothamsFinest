@@ -3,6 +3,10 @@ body{
     cursor: url('../img/cursor.png'),auto;
 }
 
+a:hover{
+  cursor: url('../img/cursor.png'),auto;
+}
+
 .banner {
     background-color: #414142;
 }
