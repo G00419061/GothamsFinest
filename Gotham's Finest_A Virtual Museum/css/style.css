@@ -1,6 +1,7 @@
 body{
     background-color: #414142;
     cursor: url('../img/cursor.png'),auto;
+    width: 98.1vw;
 }
 
 a:hover{
@@ -14,12 +15,10 @@ a:hover{
 img {
     width: auto;
     height: 20vh;
-    max-width: 100%;
 }
 
 
 .logo {
-    padding: 0%;
     display: inline;
 }
 
@@ -57,17 +56,33 @@ img {
 
 .newsfeed {
   border: 2px solid #fff;
-  padding: 5px;
   height: 100vh;
   overflow-y: auto; /* Enables scrolling if content overflows */
+  margin: 10px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  color: #fff;
+  text-align: center;
 }
 
 .d-flex {
   display: flex;
+  margin-left: 10px;
+  color: #fff;
+  
 }
 
 .timeline{
   border: 2px solid #fff;
+}
+
+.suit-showcase{
+  border: 2px solid #fff;
+}
+
+.footer{
+  border: 2px solid #fff;
+  color: #fff;
 }
 
 .row{
