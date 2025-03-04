@@ -1,7 +1,7 @@
 body{
     background-color: #414142;
     cursor: url('../img/cursor.png'),auto;
-    width: 100vw;
+    width: 100vw; 
 }
 
 a:hover{
@@ -40,18 +40,13 @@ img {
 }
 
 .origin{
-  border: 2px solid #fff;
-  height: 30vh;
-}
-
-.origin-text{
-  display: inline;
-  color: #fff;
+  height: 35vh;
+  padding: 10px;
 }
 
 .origin-video{
   border: 2px solid #fff;
-  height: 30vh;
+  height: 35vh;
 }
 
 .newsfeed {
@@ -68,7 +63,7 @@ img {
 .d-flex {
   display: flex;
   color: #fff;
-  
+  margin-left: 5px;
 }
 
 .timeline{
