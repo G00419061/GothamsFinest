@@ -3,7 +3,8 @@ body{
     cursor: url('../img/cursor.png'),auto;
     width: 100vw; 
     font-family: 'Agdasima', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
+    letter-spacing: 3px;
 }
 
 a:hover{
@@ -46,13 +47,13 @@ h2{
 }
 
 .origin{
-  height: 50vh;
+  height: 55vh;
   padding: 10px;
 }
 
 .origin-video{
   border: 2px solid #fff;
-  height: 50vh;
+  height: 55vh;
 }
 
 .newsfeed {
