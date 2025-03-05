@@ -135,3 +135,12 @@ footer{
     display: none;
 }
 }
+
+.parallax{
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat:repeat;
+  background-size: cover;
+  background-image: url("../img/timeline.png");
+}
