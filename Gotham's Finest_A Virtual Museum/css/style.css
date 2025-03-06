@@ -31,6 +31,7 @@ img {
 
 h2,h3, h4{
   font-family: 'Broadway', sans-serif;
+  color: #fff;
 }
 
 hr{
@@ -145,6 +146,10 @@ footer{
   background-repeat:repeat;
   background-size: cover;
   background-image: url("../img/timeline.png");
+}
+
+.contact{
+  color: #fff;
 }
 
 
