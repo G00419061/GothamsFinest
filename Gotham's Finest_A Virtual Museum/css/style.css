@@ -5,6 +5,8 @@ body{
     font-family: 'Agdasima', sans-serif;
     font-size: 15px;
     letter-spacing: 3px;
+    max-width: 98%;
+    margin-left: 1%;
 }
 
 @media (max-width: 1585px) {
@@ -19,15 +21,20 @@ a:hover{
 
 .banner {
     background-color: #414142;
+    max-width: 90%;
 }
 
 img {
-    width: auto;
+    width: 95%;
     height: 20vh;
 }
 
 h2{
   font-family: 'Broadway', sans-serif;
+}
+
+hr{
+  color: #000;
 }
 
 
@@ -60,17 +67,19 @@ h2{
 .origin-video{
   border: 2px solid #fff;
   height: 55vh;
-  max-width: 20vw;
+  max-width: auto;
 }
 
 .newsfeed {
-  border: 2px solid #fff;
-  height: 100vh;
+  border: 2px solid #000;
+  height: auto;
   overflow-y: auto; /* Enables scrolling if content overflows */
-  color: #fff;
+  color: #000;
   text-align: center;
   max-width: 14vw;
   margin-top: 5px;
+  margin-left: 3%;
+  background-color: #fff;
 }
 
 .d-flex {
@@ -79,19 +88,15 @@ h2{
   margin-left: 5px;
 }
 
-.timeline{
+.suit-showcase, .timeline{
   border: 2px solid #fff;
-  max-width: 77.5vw;
-}
-
-.suit-showcase{
-  border: 2px solid #fff;
-  max-width: 77.5vw;
+  max-width: auto;
+  text-align: center;
 }
 
 footer{
-  border: 2px solid #fff;
   color: #fff;
+  background-color: #333333;
 }
 
 .row{
@@ -110,7 +115,7 @@ footer{
 }
 }
 
-.parallax{
+#timeline_parallax{
   height: 100%;
   background-attachment: fixed;
   background-position: center;
