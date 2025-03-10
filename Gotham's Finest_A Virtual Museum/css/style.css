@@ -13,6 +13,10 @@ body {
   body {
     letter-spacing: 2px;
   }
+
+  .card_button{
+    font-size: 8px;
+  }
 }
 
 a:hover {
@@ -98,7 +102,7 @@ hr {
 }
 
 .newsfeed {
-  height: 100vh;
+  height: 150vh;
   overflow: scroll;
   color: #fff;
   text-align: center;
@@ -184,7 +188,7 @@ footer {
 .item{
   position: absolute;
   width: 280px;
-  height: 420px;
+  height: 450px;
   border-radius: 10px;
   padding: 10px;
   transition: 0.5s;
@@ -224,7 +228,8 @@ footer {
   border-radius: 8px;
   display: block;
   font-size: 13px;
-  text-align:left
+  text-align:left;
+  padding-left: 5px;
 
 }
 
