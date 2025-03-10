@@ -2,7 +2,7 @@ let items = document.querySelectorAll('.suit_slideshow .item'); // Fix selector
 let next = document.getElementById('next');
 let previous = document.getElementById('previous');
 
-let active = Math.floor(items.length / 2); // Initial active slide
+let active = 0;
 
 function loadShow() {
     let stt = 0;
@@ -54,3 +54,9 @@ previous.addEventListener("click", function () {
 
 // Load initial state
 loadShow();
+
+document.querySelectorAll('.item').forEach(item =>{
+    item.addEventListener('click', () => {
+        item.querySelector('.card-flip').classList.toggle('flipped')
+    });
+});
