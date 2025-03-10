@@ -147,12 +147,8 @@ footer {
 }
 
 #timeline_parallax {
-  height: 100%;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-  background-image: url("../img/timeline.png");
+  border: 1px solid #fff;
+  margin: 5px 0px 10px 0px
 }
 
 .contact {
