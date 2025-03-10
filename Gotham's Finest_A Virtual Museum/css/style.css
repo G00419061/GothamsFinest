@@ -102,7 +102,7 @@ hr {
 }
 
 .newsfeed {
-  height: 150vh;
+  height: 100%;
   overflow: scroll;
   color: #fff;
   text-align: center;
