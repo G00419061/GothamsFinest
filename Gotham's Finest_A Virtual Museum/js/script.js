@@ -2,7 +2,7 @@ let items = document.querySelectorAll('.suit_slideshow .item'); // Fix selector
 let next = document.getElementById('next');
 let previous = document.getElementById('previous');
 
-let active = 0;
+let active = Math.floor(items.length / 2);
 
 function loadShow() {
     let stt = 0;
