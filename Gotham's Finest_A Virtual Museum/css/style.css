@@ -266,6 +266,10 @@ footer {
   text-align: center;
 }
 
+.hero_img{
+  height: auto;
+}
+
 .hero_img> img{
   width: 60%;
   height: 320px;
