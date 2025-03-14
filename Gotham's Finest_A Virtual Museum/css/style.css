@@ -254,3 +254,20 @@ footer {
   left: unset;
   right: 50px;
 }
+
+
+
+.hero_text{
+  color: white;
+  margin: 10px;
+}
+
+.hero_text>h3, .hero_text>h4{
+  text-align: center;
+}
+
+.hero_img> img{
+  width: 60%;
+  height: 320px;
+}
+
