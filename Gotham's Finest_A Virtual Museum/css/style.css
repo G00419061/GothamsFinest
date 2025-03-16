@@ -33,11 +33,16 @@ img {
   height: 20vh;
 }
 
+h1,
 h2,
 h3,
 h4 {
   font-family: 'Broadway', sans-serif;
   color: #fff;
+}
+
+p{
+  color:#fff
 }
 
 hr {
@@ -273,5 +278,10 @@ footer {
 .hero_img> img{
   width: 60%;
   height: 320px;
+}
+
+.heros_title{
+  margin-top: 5px;
+  text-align: center;
 }
 
