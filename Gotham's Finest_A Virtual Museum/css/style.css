@@ -330,6 +330,13 @@ footer {
 
 }
 
+.block-1>p,
+.block-2>p {
+ background-color: #333;
+ width: 300px;
+ margin-left: 30%;
+}
+
 
 .view {
   border: solid 2px #fff;
@@ -337,6 +344,7 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-}
+  width: 50%;
+  margin-left: 25%
+};
 
