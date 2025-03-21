@@ -3,10 +3,26 @@ body {
   cursor: url('../img/cursor.png'), auto;
   width: 100vw;
   font-family: 'Agdasima', sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   letter-spacing: 3px;
   max-width: 98%;
-  margin-left: 1%;
+}
+
+.sidebar{
+  height: 100%;
+  width: 320px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main{
+  margin-left: 320px; 
+  padding: 0px 10px;
 }
 
 @media (max-width: 1585px) {
@@ -107,17 +123,6 @@ hr {
   height: 100%;
 }
 
-.newsfeed {
-  height: 5300px;
-  overflow-y: scroll;
-  color: #fff;
-  text-align: center;
-  max-width: 16vw;
-  margin-top: 5px;
-  margin-left: 3%;
-  background-color: #333;
-}
-
 .d-flex {
   display: flex;
   color: #fff;
@@ -135,6 +140,8 @@ hr {
 footer {
   color: #fff;
   background-color: #333333;
+  margin-left: 320px; 
+  padding: 0px 10px;
 }
 
 .row {
