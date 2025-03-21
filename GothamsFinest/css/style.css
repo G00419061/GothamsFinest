@@ -9,19 +9,21 @@ body {
 }
 
 .sidebar{
+  border: 1px solid black;
   height: 100%;
   width: 320px;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
-  background-color: #000;
+  right: 0;
+  background-color: #333;
   overflow-x: hidden;
   padding-top: 20px;
+  padding-right: 10px;
 }
 
 .main{
-  margin-left: 320px; 
+  margin-right: 280px; 
   padding: 0px 10px;
 }
 
@@ -148,7 +150,7 @@ footer, .footer-index {
 }
 
 .footer-index{
-  margin-left: 320px;
+  margin-right: 280px;
 }
 
 
