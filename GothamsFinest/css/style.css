@@ -289,11 +289,13 @@ footer, .footer-index {
 
 .hero_img {
   height: auto;
+  
 }
 
 .hero_img>img {
   width: 60%;
-  height: 320px;
+  height: 100%;
+  margin-left: 10%;
 }
 
 .heading{
