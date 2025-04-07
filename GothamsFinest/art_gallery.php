@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact Us | Gotham's Finest</title>
+  <title>Art Gallery | Gotham's Finest</title>
   <link rel="shortcut icon" href="img/batman logo border_yellow.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item">
             <img src="img/batman-bat-family-cover.png" class="d-block w-100" alt="Heroes of Gotham">
             <div class="carousel-caption d-none d-md-block">
               <h2>Hall of Heroes</h2>
@@ -51,7 +51,7 @@
             </div>
           </div>
 
-          <div class="carousel-item">
+          <div class="carousel-item active">
             <img src="img/art_gallery_cover.jpg" class="d-block w-100" alt="person drawing">
             <div class="carousel-caption d-none d-md-block">
               <h2>Art Gallery</h2>
@@ -97,13 +97,13 @@
               <a class="nav-link" href="room_of_rogues.php">Room of Rogues</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="art_gallery.php">Art Gallery</a>
+              <a class="nav-link active" href="art_gallery.php">Art Gallery</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="store.php">Store</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="contact.html">Contact</a>
+              <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
         </div>
@@ -112,47 +112,10 @@
     </div>
   </div>
 
-  <div class="contact">
-    <h2>Contact Us</h2>
-    <p>For general enquiries, contact us by email or call:</p>
-    <p><b>Tel:</b> 091 027 1939</p>
-    <p><b>Email:</b> gothamsfinest@batmail.com</p>
-    <br>
-    <p>If you have a particular enquiry, please fill in the contact form.</p>
-
-      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <div class="contact_form">
-          <h3>Contact Us</h3>
-
-        <input type="hidden" name="access_key" value="bad94fad-b085-4185-a283-65ed1e1af562">
-        <!--generated key to send to specified email-->
-
-        <label for="fName">First name: </label>
-        <input type="text" id="fName" name="fName" placeholder="First name" required> 
-
-        <label for="lName">Last name:</label>
-        <input type="text" id="lnNme" name="lName" placeholder="Last name" required>
-
-        <br>
-
-        <label for="email">Email: </label>
-        <input type="email" id="email" name="email" placeholder="Email address" required>
-
-        <label for="comment">Comment: </label>
-        <textarea id="comment" name="comment" rows="4" cols="50" required>
-          
-          </textarea>
-
-        <input type="hidden" name="redirect" value="https://web3forms.com/success">
-
-        <div class="button-group">
-          <button type="submit" name="submit">Submit</button>
-        </div>
-      </div>
-      </form>
-    
+  <div class="heading">
+    <h1>Fandom Art Gallery</h1>
+    <p>We want to see your talent. Upload your favourite Batman fandom that you have created so that everyone can enjoy it!</p>
   </div>
-
 
 
   <div class="row">
@@ -162,7 +125,7 @@
       </footer>
     </div>
   </div>
-  </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
