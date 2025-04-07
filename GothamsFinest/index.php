@@ -241,7 +241,7 @@ if ($conn->connect_error) {
               <p>Take a deep dive into the many outfits worn by Bruce Wayne and others who have taken up the mantle of
                 <b>Batman</b>.
               </p>
-              <p>Hover over each card to learn more.</p>
+              <p>Hover over each card to learn more..</p>
               <div class="suit_slideshow">
 
                 <div class="item">
