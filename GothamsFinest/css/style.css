@@ -271,12 +271,12 @@ footer, .footer-index {
   text-align: center;
 }
 
-.hero_img {
+.hero_image {
   height: auto;
   
 }
 
-.hero_img>img {
+.hero_image>img {
   width: 60%;
   height: 100%;
   margin-left: 10%;
