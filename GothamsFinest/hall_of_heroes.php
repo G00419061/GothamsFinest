@@ -160,7 +160,8 @@ if ($conn->connect_error) {
       echo '<div class="col-8">';
       echo '<div class="hero_text">';
       echo '<h1>' . htmlspecialchars($row['hero_name']) . '</h1>';
-      echo '<p><b>First Appearance: </b>' . htmlspecialchars($row['debut_date']) . '</p>';
+      $date = date_create($row['debut_date']);
+      echo '<p><b>First Appearance: </b>' . date_format($date, 'F Y') . '</p>';
       echo '<p><b>Biography:</b></p>';
       echo '<p>' . nl2br(htmlspecialchars($row['bio'])) . '</p>'; // nl2br to convert newlines into <br> tags
       echo '<p><b>Reading Recommendations:</b></p>';
@@ -185,10 +186,7 @@ if ($conn->connect_error) {
   $conn->close();
   ?>
 
-
-
   <hr>
-
 
   <div class="row">
     <div class="col-12">

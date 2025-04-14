@@ -1,3 +1,21 @@
+<?php
+session_start();
+// Database connection script
+$servername = "gothamsfinest";
+$username = "root";
+$password = "root";
+$dbname = "gothams_finest_db";
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -112,6 +130,53 @@
     </div>
   </div>
 
+  <?php
+  $sql = "SELECT villain_name, debut_date, bio, villain_image, read_recommendations FROM villains";
+  $result = $conn->query($sql);
+
+  // Check if we have data
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      echo '<div class="row">';
+
+
+      // Villian Biography and Text (now on the left)
+      echo '<div class="col-8">';
+      echo '<div class="villain_text">';
+      echo '<h1>' . htmlspecialchars($row['villain_name']) . '</h1>';
+      $date = date_create($row['debut_date']);
+      echo '<p><b>First Appearance: </b>' . date_format($date, 'F Y') . '</p>';
+      echo '<p><b>Biography:</b></p>';
+      echo '<p>' . nl2br(htmlspecialchars($row['bio'])) . '</p>'; // nl2br to convert newlines into <br> tags
+      echo '<p><b>Reading Recommendations:</b></p>';
+
+      // Split reading recommendations into a list
+      $recommendations = explode("\n", $row['read_recommendations']);
+      echo '<ul>';
+      foreach ($recommendations as $rec) {
+        echo '<li>' . htmlspecialchars($rec) . '</li>';
+      }
+      echo '</ul>';
+      echo '</div>'; // .villain_text
+      echo '</div>'; // .col-8
+  
+      echo '<div class="col-4">';
+      echo '<div class="villain_image">';
+      echo '<img src="' . htmlspecialchars($row['villain_image']) . '" alt="image of ' . htmlspecialchars($row['villain_name']) . '" class="img-fluid">'; // Added img-fluid class for responsiveness
+      echo '</div>';
+      echo '</div>'; // .col-4
+  
+      echo '</div>'; // .row
+      echo '<hr>';
+    }
+  } else {
+    echo "No villain data found!";
+  }
+
+  $conn->close();
+  ?>
+
+
   <div class="row">
     <div class="col-12">
       <footer>
@@ -119,7 +184,7 @@
       </footer>
     </div>
   </div>
-</div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
