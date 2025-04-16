@@ -61,7 +61,7 @@ if ($conn->connect_error) {
           </div>
 
           <div class="carousel-item">
-            <img src="img/gift_shop_cover.jpg" class="d-block w-100" alt="shop front">
+            <img src="" class="d-block w-100" alt="">
             <div class="carousel-caption d-none d-md-block">
               <h2>Gift Shop</h2>
               <p>Check out our store for some exciting merch.</p>
@@ -70,11 +70,11 @@ if ($conn->connect_error) {
           </div>
 
           <div class="carousel-item">
-            <img src="img/art_gallery_cover.jpg" class="d-block w-100" alt="person drawing">
+            <img src="" class="d-block w-100" alt="">
             <div class="carousel-caption d-none d-md-block">
-              <h2>Art Gallery</h2>
-              <p>View our amazing fan art collection submitted by many talented artists</p>
-              <a href="art_gallery.php" class="card_button">See More...</a>
+              <h2>Fan Zone</h2>
+              <p>Upload and view your favourite Batman Fanart or join in on fascinating discussions</p>
+              <a href="fan_zone.php" class="card_button">See More...</a>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ if ($conn->connect_error) {
               <a class="nav-link active" href="room_of_rogues.php">Room of Rogues</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="art_gallery.php">Art Gallery</a>
+              <a class="nav-link" href="fan_zone.php">Fan Zone</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="store.php">Store</a>
@@ -129,6 +129,13 @@ if ($conn->connect_error) {
       </nav>
     </div>
   </div>
+
+  <div class="heading">
+    <h1>ROOM OF ROGUES</h1>
+    <p>When there’s order, chaos always finds a way to creep in. While Batman and his associates work tirelessly to defend the good people of Gotham City and keep the streets safe, there are others who will stop at nothing to see Gotham brought to its knees. Whether it’s for power, money, personal tragedy or just a desire to see the world burn, this exhibit shines a light on the worst that Gotham has to offer and provide a little more insight into their histories and what exactly motivates them to a life or crime and destruction. </p>
+  </div>
+
+  <hr>
 
   <?php
   $sql = "SELECT villain_name, debut_date, bio, villain_image, read_recommendations FROM villains";

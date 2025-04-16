@@ -393,6 +393,54 @@ footer, .footer-index {
   color: #000;
 }
 
+.log-in{
+  margin-left: 20%;
+}
+
+.log-in button{
+  border: none;
+  outline: 0;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: url('../img/cursor.png'), auto;
+  width: 100%;
+  font-size: 18px;
+  outline-style: solid;
+  outline-color: #F0D755;
+  outline-width: 2px;
+  padding-left: 12px;
+  padding-right: 12px;;
+}
+
+.log-in button:hover{
+  background-color: #F0D755;
+  color: #000;
+}
+
+.button-group button{
+  border: none;
+  outline: 0;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: url('../img/cursor.png'), auto;
+  width: 30%;
+  font-size: 18px;
+  outline-style: solid;
+  outline-color: #F0D755;
+  outline-width: 2px;
+}
+
+.button-group button:hover{
+  background-color: #F0D755;
+  color: #000;
+}
+
+.villain_text{
+  margin-left: 5%;
+  color: #fff;
+}
 
 
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Art Gallery | Gotham's Finest</title>
+  <title>Fan Zone | Gotham's Finest</title>
   <link rel="shortcut icon" href="img/batman logo border_yellow.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -43,7 +43,7 @@
           </div>
 
           <div class="carousel-item">
-            <img src="img/gift_shop_cover.jpg" class="d-block w-100" alt="shop front">
+            <img src="" class="d-block w-100" alt="">
             <div class="carousel-caption d-none d-md-block">
               <h2>Gift Shop</h2>
               <p>Check out our store for some exciting merch.</p>
@@ -52,11 +52,11 @@
           </div>
 
           <div class="carousel-item active">
-            <img src="img/art_gallery_cover.jpg" class="d-block w-100" alt="person drawing">
+            <img src="" class="d-block w-100" alt="">
             <div class="carousel-caption d-none d-md-block">
-              <h2>Art Gallery</h2>
-              <p>View our amazing fan art collection submitted by many talented artists</p>
-              <a href="art_gallery.php" class="card_button">See More...</a>
+              <h2>Fan Zone</h2>
+              <p>Upload and view your favourite Batman Fanart or join in on fascinating discussions</p>
+              <a href="fan_zone.php" class="card_button">See More...</a>
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@
               <a class="nav-link" href="room_of_rogues.php">Room of Rogues</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="art_gallery.php">Art Gallery</a>
+              <a class="nav-link active" href="fan_zone.php">Fan Zone</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="store.php">Store</a>
@@ -106,6 +106,9 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
+          <div class="log-in">
+            <button>Log In</button>
+          </div>
         </div>
 
       </nav>
@@ -113,8 +116,22 @@
   </div>
 
   <div class="heading">
-    <h1>Fandom Art Gallery</h1>
-    <p>We want to see your talent. Upload your favourite Batman fandom that you have created so that everyone can enjoy it!</p>
+    <h1>Welcome User to the Fan Zone</h1>
+    <p>This page is dedicated to the amazing community that has been built around our favourite fictional character. We invite users to upload their own artistic creations to our <b>Art Gallery</b> for others to enjoy, or join in on some of the fascinating conversations taking place in the <b>Discussions</b> section below.</p>
+  </div>
+
+  <hr>
+
+  <div class="heading">
+    <h2>Art Gallery</h2>
+    <p></p>
+  </div>
+
+  <hr>
+
+  <div class="heading">
+    <h2>Discussions</h2>
+    <p></p>
   </div>
 
 
