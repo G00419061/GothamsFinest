@@ -61,4 +61,60 @@ document.querySelectorAll('.item').forEach(item => {
     });
 });
 
+function showLogin() {
+    document.getElementById("log_in_modal").style.display = "block";
+    document.getElementById("backdrop").style.display = "block";
+}
+
+function closeLogin() {
+    document.getElementById("log_in_modal").style.display = "none";
+    document.getElementById("backdrop").style.display = "none";
+}
+
+function signup() {
+    const content = document.getElementById("log_in_modal");
+
+    content.innerHTML = `
+      <h2>Create New Account</h2>
+      <form action="fan_zone.php" method="POST">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Password" required> <br>
+            <input type="checkbox" id="agree" name="agree" value="agree" required>
+            <label for="agree" id="agree_label">Agree to <a href="#" onclick="terms()">terms & conditions</a></label><br>
+            <div class="button-group">
+                <button type="submit" name="signup" id="signup_complete">Sign Up</button>
+            </div>
+            <p id="signup_direct">Already have an account? <a href="#" onclick="login()">Log in</a></p>
+        </form>
+    `;
+}
+
+
+function terms() {
+    const content = document.getElementById("log_in_modal");
+
+    content.innerHTML = `
+    <h2>Terms & Conditions</h2>
+    <p>I acknowledge that this community consists of individuals of all ages and backgrounds. I agree not to post any content that could be considered offensive or inappropriate. I understand that any breach of this agreement may result in the removal of the post and the possible suspension or deletion of my account.</p>
+    <a href="#" onclick="signup()">Back to Sign up</a>
+  `;
+}
+
+function login() {
+    const content = document.getElementById("log_in_modal");
+
+    content.innerHTML = `
+      <h2>Login Form</h2>
+          <form action="" method="POST">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Password" required> <br>
+            <div class="button-group">
+                <button type="submit" name="login" id="login_complete">Log In</button>
+            </div>
+            <p id="signup_direct">Don't have an account? <a href="#" onclick="signup()">Sign up</a></p>
+        </form>
+    `;
+}
 

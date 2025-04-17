@@ -393,31 +393,6 @@ footer, .footer-index {
   color: #000;
 }
 
-.log-in{
-  margin-left: 20%;
-}
-
-.log-in button{
-  border: none;
-  outline: 0;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: url('../img/cursor.png'), auto;
-  width: 100%;
-  font-size: 18px;
-  outline-style: solid;
-  outline-color: #F0D755;
-  outline-width: 2px;
-  padding-left: 12px;
-  padding-right: 12px;;
-}
-
-.log-in button:hover{
-  background-color: #F0D755;
-  color: #000;
-}
-
 .button-group button{
   border: none;
   outline: 0;
@@ -441,6 +416,102 @@ footer, .footer-index {
   margin-left: 5%;
   color: #fff;
 }
+
+.log-in {
+  margin-right: 10%;
+}
+
+.log-in button {
+  background-color: black;
+  color: white;
+  padding: 5px 20px;
+  border: 2px solid #F0D755;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.log-in button:hover {
+  background-color: #F0D755;
+  color: black;
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px);          
+  -webkit-backdrop-filter: blur(10px);  
+  padding: 20px;
+  width: 30%;
+  height: 75%;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  border-radius: 10px;
+}
+
+#username, #email, #password{
+  width: 90%;
+  background: rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(10px);          
+  -webkit-backdrop-filter: blur(10px); 
+  margin-top: 40px;
+}
+
+#agree{
+  margin-top: 30px;
+}
+
+#agree_label{
+  color: #fff;
+}
+
+#login_complete{
+  width: 80%;
+  height: 60px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+#signup_complete{
+  width: 80%;
+  height: 50px;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+#signup_direct{
+  margin-top: 30px;
+}
+.carousel-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+#carousel_text{
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(10px);          
+  -webkit-backdrop-filter: blur(10px);  
+  border-radius: 10px;
+}
+
+
 
 
 

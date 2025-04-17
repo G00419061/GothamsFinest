@@ -1,3 +1,20 @@
+<?php
+session_start();
+// Database connection script
+$servername = "gothamsfinest";
+$username = "root";
+$password = "root";
+$dbname = "gothams_finest_db";
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -33,33 +50,34 @@
         </div>
 
         <div class="carousel-inner">
-          <div class="carousel-item">
-            <img src="img/batman-bat-family-cover.png" class="d-block w-100" alt="Heroes of Gotham">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>Hall of Heroes</h2>
-              <p>Learn about the many other heroes that work to keep Gotham safe.</p>
-              <a href="hall_of_heroes.php" class="card_button">See More...</a>
+            <div class="carousel-item">
+              <img src="img/batman-bat-family-cover.png" class="d-block w-100 carousel-img" alt="Heroes of Gotham">
+              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+                <h2>Hall of Heroes</h2>
+                <p>Learn about the many other heroes that work to keep Gotham safe.</p>
+                <a href="hall_of_heroes.php" class="card_button">See More...</a>
+              </div>
             </div>
-          </div>
 
-          <div class="carousel-item">
-            <img src="" class="d-block w-100" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>Gift Shop</h2>
-              <p>Check out our store for some exciting merch.</p>
-              <a href="store.php" class="card_button">See More...</a>
+            <div class="carousel-item">
+              <img src="img/batman_villains.jpg" class="d-block w-100 carousel-img" alt="Gotham's Greatest Villains">
+              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+                <h2>Room of Rogues</h2>
+                <p>Check out some of the less friendly residents of Gotham City
+                </p>
+                <a href="room_of_rogues.php" class="card_button">See More...</a>
+              </div>
             </div>
-          </div>
 
-          <div class="carousel-item active">
-            <img src="" class="d-block w-100" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>Fan Zone</h2>
-              <p>Upload and view your favourite Batman Fanart or join in on fascinating discussions</p>
-              <a href="fan_zone.php" class="card_button">See More...</a>
+            <div class="carousel-item active">
+              <img src="img/batfans.jpg" class="d-block w-100 carousel-img" alt="Group of Batman fans">
+              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+                <h2>Fan Zone</h2>
+                <p>Upload and view your favourite Batman Fanart.</p>
+                <a href="fan_zone.php" class="card_button">See More...</a>
+              </div>
             </div>
           </div>
-        </div>
 
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
           data-bs-slide="prev">
@@ -99,21 +117,109 @@
             <li class="nav-item">
               <a class="nav-link active" href="fan_zone.php">Fan Zone</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="store.php">Store</a>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
         </div>
+
+        <div class="log-in">
+          <button onclick="showLogin()">Log In</button>
+        </div>
+
+        <!-- Modal and Backdrop -->
+        <div id="backdrop" class="backdrop" onclick="closeLogin()"></div>
+
+        <div id="log_in_modal" class="modal" onclick="event.stopPropagation()">
+          <h2>Login Form</h2>
+          <form action="" method="POST">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="password" name="password" id="password" placeholder="Password" required> <br>
+            <div class="button-group">
+              <button type="submit" name="login" id="login_complete">Log In</button>
+            </div>
+            <p id="signup_direct">Don't have an account? <a href="#" onclick="signup()">Sign up</a></p>
+          </form>
+        </div>
+
+        <?php
+
+        if (isset($_POST['signup'])) {
+          $new_username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '';
+          $new_email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+          $new_password = isset($_POST['password']) ? $_POST['password'] : '';
+
+          if (!isset($_POST['agree'])) {
+            echo "<script>alert('You must agree to the terms.');</script>";
+          } else {
+            $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+            $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $new_username, $new_email, $password_hash);
+
+            if ($stmt->execute()) {
+              $_SESSION['Username'] = $new_username;
+              echo "<script>window.location.href='fan_zone.php';</script>";
+              exit();
+            } else {
+              echo "<script>alert('Signup failed. Try a different email/username.');</script>";
+            }
+
+            $stmt->close();
+          }
+        }
+
+        // --- LOGIN HANDLER ---
+        if (isset($_POST['login'])) {
+          $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
+          $username = isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '';
+          $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+          $sql = "SELECT * FROM users WHERE username = ? AND email = ?";
+          $stmt = $conn->prepare($sql);
+          $stmt->bind_param("ss", $username, $email);
+          $stmt->execute();
+          $result = $stmt->get_result();
+
+          if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            if (password_verify($password, $row['password_hash'])) {
+              $_SESSION['Username'] = $username;
+              $_SESSION['Email'] = $email;
+              echo "<script>window.location.href='fan_zone.php';</script>";
+              exit();
+            } else {
+              echo "<script>alert('Invalid credentials');</script>";
+            }
+          } else {
+            echo "<script>alert('Invalid credentials');</script>";
+          }
+
+          $stmt->close();
+        }
+
+        $conn->close();
+        ?>
+
+
       </nav>
     </div>
   </div>
 
   <div class="heading">
-    <h1>Welcome User to the Fan Zone</h1>
-    <p>This page is dedicated to the amazing community that has been built around our favourite fictional character. We invite users to upload their own artistic creations to our <b>Art Gallery</b> for others to enjoy, or join in on some of the fascinating conversations taking place in the <b>Discussions</b> section below.</p>
+    <h1>Welcome, <?php
+    if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])) {
+      echo ucfirst($_SESSION["Username"]);
+    } else {
+      echo "User"; // Default text if username is not set
+    }
+    ?>, to the Fan Zone</h1>
+    <p>This page is dedicated to the amazing community that has been built around our favourite fictional character. We
+      invite users to upload their own artistic creations to our <b>Art Gallery</b> for others to enjoy.
+    </p>
   </div>
 
   <hr>
@@ -124,12 +230,6 @@
   </div>
 
   <hr>
-
-  <div class="heading">
-    <h2>Discussions</h2>
-    <p></p>
-  </div>
-
 
   <div class="row">
     <div class="col-12">
@@ -143,7 +243,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <script src="js/script.js"></script> 
+  <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -51,33 +51,34 @@ if ($conn->connect_error) {
         </div>
 
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/batman-bat-family-cover.png" class="d-block w-100" alt="Heroes of Gotham">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>Hall of Heroes</h2>
-              <p>Learn about the many other heroes that work to keep Gotham safe.</p>
-              <a href="#" class="card_button">See More...</a>
+            <div class="carousel-item active">
+              <img src="img/batman-bat-family-cover.png" class="d-block w-100 carousel-img" alt="Heroes of Gotham">
+              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+                <h2>Hall of Heroes</h2>
+                <p>Learn about the many other heroes that work to keep Gotham safe.</p>
+                <a href="hall_of_heroes.php" class="card_button">See More...</a>
+              </div>
             </div>
-          </div>
 
-          <div class="carousel-item">
-            <img src="" class="d-block w-100" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>Gift Shop</h2>
-              <p>Check out our store for some exciting merch.</p>
-              <a href="store.php" class="card_button">See More...</a>
+            <div class="carousel-item">
+              <img src="img/batman_villains.jpg" class="d-block w-100 carousel-img" alt="Gotham's Greatest Villains">
+              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+                <h2>Room of Rogues</h2>
+                <p>Check out some of the less friendly residents of Gotham City
+                </p>
+                <a href="room_of_rogues.php" class="card_button">See More...</a>
+              </div>
             </div>
-          </div>
 
-          <div class="carousel-item">
-            <img src="" class="d-block w-100" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <h2>Fan Zone</h2>
-              <p>Upload and view your favourite Batman Fanart or join in on fascinating discussions</p>
-              <a href="fan_zone.php" class="card_button">See More...</a>
+            <div class="carousel-item">
+              <img src="img/batfans.jpg" class="d-block w-100 carousel-img" alt="Group of Batman fans">
+              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+                <h2>Fan Zone</h2>
+                <p>Upload and view your favourite Batman Fanart.</p>
+                <a href="fan_zone.php" class="card_button">See More...</a>
+              </div>
             </div>
           </div>
-        </div>
 
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
           data-bs-slide="prev">
@@ -117,9 +118,7 @@ if ($conn->connect_error) {
             <li class="nav-item">
               <a class="nav-link" href="fan_zone.php">Fan Zone</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="store.php">Store</a>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
