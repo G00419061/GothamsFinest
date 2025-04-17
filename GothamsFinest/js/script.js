@@ -55,7 +55,7 @@ previous.addEventListener("click", function () {
 // Load initial state
 loadShow();
 
-document.querySelectorAll('.item').forEach(item =>{
+document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('click', () => {
         item.querySelector('.card-flip').classList.toggle('flipped')
     });

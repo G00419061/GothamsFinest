@@ -222,7 +222,7 @@ if ($conn->connect_error) {
                     echo "No comics found.";
                   }
                   ?>
-                  
+
                 </div>
               </div>
 
@@ -329,9 +329,8 @@ if ($conn->connect_error) {
                   </div>
                 </div>
 
-                <button id="next">></button>
-                <button id="previous">
-                  <</button>
+                <button id="previous" class="nav-button">&larr;</button>
+                <button id="next" class="nav-button">&rarr;</button>
               </div>
             </div>
           </div>
@@ -346,26 +345,26 @@ if ($conn->connect_error) {
     <h2>Newsfeed</h2>
     <div class="articles">
       <?php
-      
+
       $sql = "SELECT article_img, title, text, created_at FROM news ORDER BY created_at DESC";
       $result = $conn->query($sql);
-      
+
       // Display news cards
       if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              echo '<div class="card" style="width: 18rem; margin: 1rem;">';
-              echo '<h4 class="card-title" style="padding: 0.5rem;">' . htmlspecialchars($row["title"]) . '</h4>';
-              echo '<img src="' . htmlspecialchars($row["article_img"]) . '" class="card-img-top" alt="title card">';
-              echo '<div class="card-body">';
-              echo '<p class="card-text">' . htmlspecialchars($row["text"]) . '</p>';
-              echo '<small class="text-muted">Published on: ' . date("F j, Y", strtotime($row["created_at"])) . '</small>';
-              echo '</div>';
-              echo '</div>';
-          }
+        while ($row = $result->fetch_assoc()) {
+          echo '<div class="card" style="width: 18rem; margin: 1rem;">';
+          echo '<h4 class="card-title" style="padding: 0.5rem;">' . htmlspecialchars($row["title"]) . '</h4>';
+          echo '<img src="' . htmlspecialchars($row["article_img"]) . '" class="card-img-top" alt="title card">';
+          echo '<div class="card-body">';
+          echo '<p class="card-text">' . htmlspecialchars($row["text"]) . '</p>';
+          echo '<small class="text-muted">Published on: ' . date("F j, Y", strtotime($row["created_at"])) . '</small>';
+          echo '</div>';
+          echo '</div>';
+        }
       } else {
-          echo "No news articles found.";
+        echo "No news articles found.";
       }
-      
+
       $conn->close();
 
       ?>

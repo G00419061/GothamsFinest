@@ -106,11 +106,7 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
-          <div class="log-in">
-            <button>Log In</button>
-          </div>
         </div>
-
       </nav>
     </div>
   </div>
