@@ -50,42 +50,42 @@ if ($conn->connect_error) {
         </div>
 
         <div class="carousel-inner">
-            <div class="carousel-item">
-              <img src="img/batman-bat-family-cover.png" class="d-block w-100 carousel-img" alt="Heroes of Gotham">
-              <div class="carousel-caption d-none d-md-block" id="carousel_text">
-                <h2>Hall of Heroes</h2>
-                <p>Learn about the many other heroes that work to keep Gotham safe.</p>
-                <a href="hall_of_heroes.php" class="card_button">See More...</a>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <img src="img/batman_villains.jpg" class="d-block w-100 carousel-img" alt="Gotham's Greatest Villains">
-              <div class="carousel-caption d-none d-md-block" id="carousel_text">
-                <h2>Room of Rogues</h2>
-                <p>Check out some of the less friendly residents of Gotham City
-                </p>
-                <a href="room_of_rogues.php" class="card_button">See More...</a>
-              </div>
-            </div>
-
-            <div class="carousel-item active">
-              <img src="img/batfans.jpg" class="d-block w-100 carousel-img" alt="Group of Batman fans">
-              <div class="carousel-caption d-none d-md-block" id="carousel_text">
-                <h2>Fan Zone</h2>
-                <p>Upload and view your favourite Batman Fanart.</p>
-                <a href="fan_zone.php" class="card_button">See More...</a>
-              </div>
+          <div class="carousel-item">
+            <img src="img/batman-bat-family-cover.png" class="d-block w-100 carousel-img" alt="Heroes of Gotham">
+            <div class="carousel-caption d-none d-md-block" id="carousel_text">
+              <h2>Hall of Heroes</h2>
+              <p>Learn about the many other heroes that work to keep Gotham safe.</p>
+              <a href="hall_of_heroes.php" class="card_button">See More...</a>
             </div>
           </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          <div class="carousel-item">
+            <img src="img/batman_villains.jpg" class="d-block w-100 carousel-img" alt="Gotham's Greatest Villains">
+            <div class="carousel-caption d-none d-md-block" id="carousel_text">
+              <h2>Room of Rogues</h2>
+              <p>Check out some of the less friendly residents of Gotham City
+              </p>
+              <a href="room_of_rogues.php" class="card_button">See More...</a>
+            </div>
+          </div>
+
+          <div class="carousel-item active">
+            <img src="img/batfans.jpg" class="d-block w-100 carousel-img" alt="Group of Batman fans">
+            <div class="carousel-caption d-none d-md-block" id="carousel_text">
+              <h2>Fan Zone</h2>
+              <p>Upload and view your favourite Batman Fanart.</p>
+              <a href="fan_zone.php" class="card_button">See More...</a>
+            </div>
+          </div>
+        </div>
+
+        <button id="previous" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
           data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        <button id="next" class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
           data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
@@ -210,7 +210,7 @@ if ($conn->connect_error) {
   </div>
 
   <div class="heading">
-    <h1>Welcome, <?php
+    <h1>Welcome <?php
     if (isset($_SESSION["Username"]) && !empty($_SESSION["Username"])) {
       echo ucfirst($_SESSION["Username"]);
     } else {
@@ -224,26 +224,51 @@ if ($conn->connect_error) {
 
   <hr>
 
-  <div class="heading">
-    <h2>Art Gallery</h2>
-    <p></p>
-  </div>
+  <h3>Upload Your Art</h3>
 
+  <form action="upload_handler.php" id="uploadForm" method="POST" enctype="multipart/form-data">
+    <div class="image_upload">
+      <div class="drop_area">
+        <div class="upload-container" id="drop-area">
+          <img src="img/icon.png" alt="Upload Icon">
+          <p>Drag & drop <br>or click here to upload an image</p>
+          <input type="file" name="image" id="fileElem" accept="image/*" hidden />
+          <div id="preview"></div>
+        </div>
+        <br>
+
+        <!-- Title input -->
+        <div class="form-group mt-3">
+          <label for="title" class="form-label" id="art_title">Title your artwork</label>
+          <input type="text" id="title" name="title" class="form-control" placeholder="Enter image title" required>
+        </div>
+        <br>
+
+        <!-- Submit button -->
+        <div class="button-group">
+          <button type="submit">Upload Image</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <br>
   <hr>
 
-  <div class="row">
-    <div class="col-12">
-      <footer>
-        footer
-      </footer>
-    </div>
-  </div>
+  <footer>
+    footer
+  </footer>
 
+
+  
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <script src="js/script.js"></script>
+  <script src="js/drag_and_drop.js"></script>
 </body>
 
 </html>
