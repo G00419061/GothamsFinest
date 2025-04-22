@@ -573,6 +573,12 @@ hr {
   text-align: center;
 }
 
+#art-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
 .batman-footer {
   background-color: #222;
   color: #fff;
@@ -623,7 +629,34 @@ hr {
 
 @media (max-width: 768px) {
   .card {
-    flex: 1 1 100%;
+    width: 100%;
+    max-width: 380px;
+    margin: 10px 0;
+    padding: 10px;
+    margin-left: 25%;
+  }
+
+  .carousel-indicators {
+    z-index: 0;
+  }
+
+  #carousel_text {
+    transform: scale(0.95); 
+    transform-origin: bottom left; 
+    padding: 10px; 
+  }
+  
+  #carousel_text h2 {
+    font-size: 1.5rem; 
+  }
+  
+  #carousel_text p {
+    font-size: 0.9rem; 
+  }
+  
+  #carousel_text .card_button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
   }
 
   .sidebar {
@@ -631,6 +664,7 @@ hr {
     height: 100%;
     right: -100%;
     transition: right 0.3s ease;
+    z-index: 1;
   }
 
   .sidebar.active {
@@ -696,11 +730,21 @@ hr {
     display: none;
   }
 
-  
+  #art-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
 
   .batman-footer .footer-content {
     flex-direction: column;
     text-align: center;
   }
+}
+
+@media (max-width: 426px) {
+
+  #art-grid {
+    grid-template-columns: 1fr;
+  }
+
 }

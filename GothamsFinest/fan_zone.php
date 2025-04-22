@@ -130,7 +130,7 @@ if (isset($_SESSION["upload_success"])) {
         <div class="carousel-inner">
           <div class="carousel-item">
             <img src="img/batman-bat-family-cover.png" class="d-block w-100 carousel-img" alt="Heroes of Gotham">
-            <div class="carousel-caption d-none d-md-block" id="carousel_text">
+            <div class="carousel-caption  d-md-block" id="carousel_text">
               <h2>Hall of Heroes</h2>
               <p>Learn about the many other heroes that work to keep Gotham safe.</p>
               <a href="hall_of_heroes.php" class="card_button">See More...</a>
@@ -139,7 +139,7 @@ if (isset($_SESSION["upload_success"])) {
 
           <div class="carousel-item">
             <img src="img/batman_villains.jpg" class="d-block w-100 carousel-img" alt="Gotham's Greatest Villains">
-            <div class="carousel-caption d-none d-md-block" id="carousel_text">
+            <div class="carousel-caption  d-md-block" id="carousel_text">
               <h2>Room of Rogues</h2>
               <p>Check out some of the less friendly residents of Gotham City
               </p>
@@ -149,7 +149,7 @@ if (isset($_SESSION["upload_success"])) {
 
           <div class="carousel-item active">
             <img src="img/batfans.jpg" class="d-block w-100 carousel-img" alt="Group of Batman fans">
-            <div class="carousel-caption d-none d-md-block" id="carousel_text">
+            <div class="carousel-caption  d-md-block" id="carousel_text">
               <h2>Fan Zone</h2>
               <p>Upload and view your favourite Batman Fanart.</p>
               <a href="fan_zone.php" class="card_button">See More...</a>
@@ -342,9 +342,8 @@ if (isset($_SESSION["upload_success"])) {
   <h3>Fan Gallery</h3>
 
   <div id="card-container">
-    <table id="art-table">
+    <div id="art-grid">
       <?php
-
       $servername = "gothamsfinest";
       $username = "root";
       $password = "root";
@@ -358,30 +357,16 @@ if (isset($_SESSION["upload_success"])) {
         die("Connection failed: " . $conn->connect_error);
       }
 
-      // Connect to DB again if you closed earlier
-      $conn = new mysqli($servername, $username, $password, $dbname);
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
-
       $sql = "SELECT a.image, a.caption, a.upload_date, u.username
-            FROM art_gallery a
-            JOIN users u ON a.user_id = u.user_id
-            ORDER BY a.upload_date DESC";
+              FROM art_gallery a
+              JOIN users u ON a.user_id = u.user_id
+              ORDER BY a.upload_date DESC";
       $result = $conn->query($sql);
 
       if ($result && $result->num_rows > 0) {
         $counter = 0;
 
         while ($row = $result->fetch_assoc()) {
-          if ($counter % 4 == 0) {
-            if ($counter > 0) {
-              echo "</tr>";
-            }
-            echo "<tr>";
-          }
-
-          echo "<td>";
           echo '<div class="art-card">';
           echo '<div class="card-content">';
           echo "<img src='uploads/" . htmlspecialchars($row["image"]) . "' alt='art image'>";
@@ -390,22 +375,17 @@ if (isset($_SESSION["upload_success"])) {
           echo '<p class="upload_date">Uploaded: ' . date("F j, Y", strtotime($row["upload_date"])) . '</p>';
           echo '</div>';
           echo '</div>';
-          echo "</td>";
-
           $counter++;
         }
-
-        if ($counter > 0) {
-          echo "</tr>";
-        }
       } else {
-        echo "<tr><td colspan='4'>No art has been uploaded yet. Why not be the first?</td></tr>";
+        echo "<div class='no-art'>No art has been uploaded yet. Why not be the first?</div>";
       }
 
       $conn->close();
       ?>
-    </table>
+    </div>
   </div>
+
 
   <br>
 

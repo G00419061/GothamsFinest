@@ -59,7 +59,7 @@ if ($conn->connect_error) {
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="img/batman-bat-family-cover.png" class="d-block w-100 carousel-img" alt="Heroes of Gotham">
-              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+              <div class="carousel-caption  d-md-block" id="carousel_text">
                 <h2>Hall of Heroes</h2>
                 <p>Learn about the many other heroes that work to keep Gotham safe.</p>
                 <a href="hall_of_heroes.php" class="card_button">See More...</a>
@@ -68,7 +68,7 @@ if ($conn->connect_error) {
 
             <div class="carousel-item">
               <img src="img/batman_villains.jpg" class="d-block w-100 carousel-img" alt="Gotham's Greatest Villains">
-              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+              <div class="carousel-caption  d-md-block" id="carousel_text">
                 <h2>Room of Rogues</h2>
                 <p>Check out some of the less friendly residents of Gotham City
                 </p>
@@ -78,7 +78,7 @@ if ($conn->connect_error) {
 
             <div class="carousel-item">
               <img src="img/batfans.jpg" class="d-block w-100 carousel-img" alt="Group of Batman fans">
-              <div class="carousel-caption d-none d-md-block" id="carousel_text">
+              <div class="carousel-caption  d-md-block" id="carousel_text">
                 <h2>Fan Zone</h2>
                 <p>Upload and view your favourite Batman Fanart.</p>
                 <a href="fan_zone.php" class="card_button">See More...</a>
