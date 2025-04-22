@@ -118,6 +118,10 @@ function login() {
     `;
 }
 
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('active');
+  }
+
 
 
 

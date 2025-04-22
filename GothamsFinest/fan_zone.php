@@ -14,7 +14,63 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+// ---------------------------
+// Handle image upload to DB
+// ---------------------------
+$uploadMessage = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["title"]) && isset($_FILES["image"])) {
+  if (!isset($_SESSION["Username"])) {
+    $uploadMessage = "You must be logged in to upload.";
+  } else {
+    $username = $_SESSION["Username"];
+
+    // Get user ID
+    $stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows === 0) {
+      $uploadMessage = "User not found in database.";
+    } else {
+      $userData = $result->fetch_assoc();
+      $user_id = $userData["user_id"];
+
+      // Validate file
+      $allowedTypes = ["image/jpeg", "image/png", "image/jfif"];
+      if (!in_array($_FILES["image"]["type"], $allowedTypes)) {
+        $uploadMessage = "Only JPG, PNG, and JFIF files are allowed.";
+      } elseif ($_FILES["image"]["error"] !== UPLOAD_ERR_OK) {
+        $uploadMessage = "File upload error.";
+      } else {
+        $uploadDir = "uploads/";
+        if (!is_dir($uploadDir)) {
+          mkdir($uploadDir, 0755, true);
+        }
+
+        $filename = time() . "_" . basename($_FILES["image"]["name"]);
+        $targetPath = $uploadDir . $filename;
+
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetPath)) {
+          $caption = $conn->real_escape_string($_POST["title"]);
+
+          $stmt = $conn->prepare("INSERT INTO art_gallery (user_id, username, image, caption) VALUES (?, ?, ?, ?)");
+          $stmt->bind_param("isss", $user_id, $username, $filename, $caption);
+
+          if ($stmt->execute()) {
+            $uploadMessage = "Image uploaded successfully!";
+          } else {
+            $uploadMessage = "Database error. Please try again.";
+          }
+        } else {
+          $uploadMessage = "Could not move uploaded file.";
+        }
+      }
+    }
+  }
+}
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -31,14 +87,18 @@ if ($conn->connect_error) {
 </head>
 
 <body>
-  <div class="row">
-    <div class="col-1">
-      <div class="logo">
-        <a href="index.php"><img src="img/batman logo yellow writing.png" class="img-thumbnail"
-            alt="A logo depicting a Batman silhouette with a yellow outline"></a>
-      </div>
+
+  <div class="row" id="logo">
+    <div class="logo">
+      <a href="index.php">
+        <img src="img/batman logo yellow writing.png" class="img-thumbnail"
+          alt="A logo depicting a Batman silhouette with a yellow outline">
+      </a>
     </div>
-    <div class="col-11">
+  </div>
+
+  <div class="row">
+    <div class="col-12">
       <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -226,7 +286,7 @@ if ($conn->connect_error) {
 
   <h3>Upload Your Art</h3>
 
-  <form action="upload_handler.php" id="uploadForm" method="POST" enctype="multipart/form-data">
+  <form action="fan_zone.php" id="uploadForm" method="POST" enctype="multipart/form-data">
     <div class="image_upload">
       <div class="drop_area">
         <div class="upload-container" id="drop-area">
@@ -252,17 +312,107 @@ if ($conn->connect_error) {
     </div>
   </form>
 
-  <br>
-  <hr>
+  <?php if (!empty($uploadMessage)): ?>
+    <div class="alert alert-info mt-3 text-center" role="alert">
+      <?php echo htmlspecialchars($uploadMessage); ?>
+    </div>
+  <?php endif; ?>
 
-  <footer>
-    footer
+  <br>
+
+  <hr>
+  <h3>Fan Gallery</h3>
+
+  <div id="card-container">
+    <table id="art-table">
+      <?php
+
+      $servername = "gothamsfinest";
+      $username = "root";
+      $password = "root";
+      $dbname = "gothams_finest_db";
+
+      // Create connection
+      $conn = new mysqli($servername, $username, $password, $dbname);
+
+      // Check connection
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+
+      // Connect to DB again if you closed earlier
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+
+      $sql = "SELECT a.image, a.caption, a.upload_date, u.username
+            FROM art_gallery a
+            JOIN users u ON a.user_id = u.user_id
+            ORDER BY a.upload_date DESC";
+      $result = $conn->query($sql);
+
+      if ($result && $result->num_rows > 0) {
+        $counter = 0;
+
+        while ($row = $result->fetch_assoc()) {
+          if ($counter % 4 == 0) {
+            if ($counter > 0) {
+              echo "</tr>";
+            }
+            echo "<tr>";
+          }
+
+          echo "<td>";
+          echo '<div class="art-card">';
+          echo '<div class="card-content">';
+          echo "<img src='uploads/" . htmlspecialchars($row["image"]) . "' alt='art image'>";
+          echo '<h3 class="created_by">Created By: ' . ucfirst(htmlspecialchars($row["username"])) . '</h3>';
+          echo '<p class="title">Title: ' . htmlspecialchars($row["caption"]) . '</p>';
+          echo '<p class="upload_date">Uploaded: ' . date("F j, Y", strtotime($row["upload_date"])) . '</p>';
+          echo '</div>';
+          echo '</div>';
+          echo "</td>";
+
+          $counter++;
+        }
+
+        if ($counter > 0) {
+          echo "</tr>";
+        }
+      } else {
+        echo "<tr><td colspan='4'>No art has been uploaded yet. Why not be the first?</td></tr>";
+      }
+
+      $conn->close();
+      ?>
+    </table>
+  </div>
+
+  <br>
+
+  <footer class="batman-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="img/batman logo border_yellow.png" alt="Batman Logo">
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 Gotham's Finest. All Rights Reserved.</p>
+        <p>Follow us on:</p>
+        <div class="social-links">
+          <a href="#" class="social-icon">Facebook</a>
+          <a href="#" class="social-icon">Twitter</a>
+          <a href="#" class="social-icon">Instagram</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
 
-  
 
-  
+
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

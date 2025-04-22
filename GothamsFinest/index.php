@@ -31,17 +31,22 @@ if ($conn->connect_error) {
 
 </head>
 
-<body>
+<body id="body_index">
   <div class="main">
-    <div class="row">
-      <div class="col-1">
+
+    <div class="row" id="logo">
         <div class="logo">
-          <a href="index.php"><img src="img/batman logo yellow writing.png" class="img-thumbnail"
-              alt="A logo depicting a Batman silhouette with a yellow outline"></a>
-        </div>
-      </div>
-      <div class="col-11">
+          <a href="index.php">
+            <img src="img/batman logo yellow writing.png" class="img-thumbnail"
+              alt="A logo depicting a Batman silhouette with a yellow outline">
+          </a>
+        </div>  
+    </div>
+
+    <div class="row">
+      <div class="col-12">
         <div id="carouselExampleCaptions" class="carousel slide">
+          <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Newsfeed</button>
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
               aria-current="true" aria-label="Slide 1"></button>
@@ -99,13 +104,13 @@ if ($conn->connect_error) {
 
     <div class="row">
       <div class="col">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg w-100">
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse w-100" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link active" href="index.php">Home</a>
@@ -143,22 +148,26 @@ if ($conn->connect_error) {
                 at
                 the theater.<br>
 
-                <br>One fateful evening, after watching The Mark of Zorro at a grand Gotham theater, the family decided
+                <br>One fateful evening, after watching The Mark of Zorro at a grand Gotham theater, the family
+                decided
                 to
-                take a shortcut through Crime Alley on their way home. There, they were confronted by a desperate mugger
+                take a shortcut through Crime Alley on their way home. There, they were confronted by a desperate
+                mugger
                 named <b>Joe Chill</b>, who demanded their money and valuables. Despite their compliance, Chill
                 ruthlessly
                 gunned
                 down both Thomas and Martha before fleeing into the night, leaving young Bruce alone, horrified, and
                 forever changed.<br>
 
-                <br>That night, Bruce made a silent vow: he would dedicate his life to ensuring no one else suffered the
+                <br>That night, Bruce made a silent vow: he would dedicate his life to ensuring no one else suffered
+                the
                 same tragedy. Over the years, he pushed himself to the limits, training in martial arts, criminology,
                 and
                 advanced technology. When a bat crashed through his study window, he saw it as a symbol of fear and
                 rebirth—thus, <b>Batman</b> was born.<br>
 
-                <br>Though he initially worked alone, Batman has since taken on many allies in his crusade. He mentored
+                <br>Though he initially worked alone, Batman has since taken on many allies in his crusade. He
+                mentored
                 multiple Robins, including <b>Dick Grayson</b>, <b>Jason Todd</b>, <b>Tim Drake</b>, and <b>Damian
                   Wayne</b>, and formed strong bonds
                 with <b>Alfred Pennyworth</b>, his ever-loyal butler, and <b>Commissioner Jim Gordon</b>, one of
@@ -193,8 +202,10 @@ if ($conn->connect_error) {
                 We have compiled a list of some of the most notable ones—essential for truly understanding the
                 character,
                 his world, and his vast supporting cast.</p>
-              <p>From his first appearance in 1939 to the modern day, explore the rich and complex timeline of the Dark
-                Knight. See how Batman has evolved from the creation of Bob Kane and Bill Finger into the multi-layered,
+              <p>From his first appearance in 1939 to the modern day, explore the rich and complex timeline of the
+                Dark
+                Knight. See how Batman has evolved from the creation of Bob Kane and Bill Finger into the
+                multi-layered,
                 household name he is today.</p>
 
               <div id="timeline_background">
@@ -253,7 +264,8 @@ if ($conn->connect_error) {
                         popular
                         characters of the time, such as <b>Zorro</b> and <b>The Phantom</b>. It features a vastly
                         different design from the more traditional look seen in modern comics.<br>Before publication,
-                        writer <b>Bill Finger</b> suggested several changes, resulting in the darker, more intimidating
+                        writer <b>Bill Finger</b> suggested several changes, resulting in the darker, more
+                        intimidating
                         character design most fans are familiar with today.</p>
                     </div>
                   </div>
@@ -266,8 +278,10 @@ if ($conn->connect_error) {
                     </div>
                     <div class="card-back">
                       <p><b>Debut: </b><br>Detective Comics #27 (March 1939)</p>
-                      <p><b>History: </b><br>The first Batsuit to appear in the comics, this design laid the groundwork
-                        for many future iterations. Over time, various artists introduced several changes, including the
+                      <p><b>History: </b><br>The first Batsuit to appear in the comics, this design laid the
+                        groundwork
+                        for many future iterations. Over time, various artists introduced several changes, including
+                        the
                         removal of the purple gloves, the shortening of the ears, and alterations to the shape of the
                         cape.</p>
                     </div>
@@ -281,9 +295,12 @@ if ($conn->connect_error) {
                     </div>
                     <div class="card-back">
                       <p><b>Debut: </b><br>Batman Beyond Episode #1 (January 1999)</p>
-                      <p><b>History: </b><br>An aging Bruce Wayne, forced to step away from crime-fighting due to health
-                        issues, reluctantly takes on <b>Terry McGinnis</b> as his successor. This new suit deviates from
-                        the classic Batman look, featuring a sleek, all-black design with a full-face mask, larger ears,
+                      <p><b>History: </b><br>An aging Bruce Wayne, forced to step away from crime-fighting due to
+                        health
+                        issues, reluctantly takes on <b>Terry McGinnis</b> as his successor. This new suit deviates
+                        from
+                        the classic Batman look, featuring a sleek, all-black design with a full-face mask, larger
+                        ears,
                         a
                         large red bat emblem on the chest, and retractable red underarm wings. It also boasts advanced
                         technology, including rocket-powered boots and stealth cloaking, designed to assist both the
@@ -305,7 +322,8 @@ if ($conn->connect_error) {
                         Battle
                         for the Cowl (2009), Dick Grayson—the original Robin and, at the time, Nightwing—took up the
                         mantle of Batman. <br>This comic also marks the debut of Bruce Wayne’s biological son, Damian
-                        Wayne, as Robin, becoming the partner to Dick’s Batman. The two would become a formidable pair,
+                        Wayne, as Robin, becoming the partner to Dick’s Batman. The two would become a formidable
+                        pair,
                         right up until the return of Bruce Wayne and his retaking of the Batman mantle.</p>
                     </div>
                   </div>
@@ -321,7 +339,8 @@ if ($conn->connect_error) {
                       <p><b>Debut: </b><br>The Batman Chapter #1(1943)</p>
                       <p><b>History: </b><br>Debuting just 4 years after Batman's introduction in the comics, The Dark
                         Knight first appeared on television in 1943 played my actor Lewis Wilson. Wilson is still the
-                        youngest actor to play Batman in live acton, at only 23 years old when fisrt taking on the role.
+                        youngest actor to play Batman in live acton, at only 23 years old when fisrt taking on the
+                        role.
                       </p>
                     </div>
                   </div>
@@ -350,7 +369,7 @@ if ($conn->connect_error) {
       // Display news cards
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo '<div class="card" style="width: 18rem; margin: 1rem;">';
+          echo '<div class="card">';
           echo '<h4 class="card-title" style="padding: 0.5rem;">' . htmlspecialchars($row["title"]) . '</h4>';
           echo '<img src="' . htmlspecialchars($row["article_img"]) . '" class="card-img-top" alt="title card">';
           echo '<div class="card-body">';
@@ -369,14 +388,22 @@ if ($conn->connect_error) {
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12">
-      <div class="footer-index">
-        footer
+  <footer class="batman-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="img/batman logo border_yellow.png" alt="Batman Logo">
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 Gotham's Finest. All Rights Reserved.</p>
+        <p>Follow us on:</p>
+        <div class="social-links">
+          <a href="#" class="social-icon">Facebook</a>
+          <a href="#" class="social-icon">Twitter</a>
+          <a href="#" class="social-icon">Instagram</a>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
