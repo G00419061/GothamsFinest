@@ -30,15 +30,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["title"]) && isset($_F
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
+
     if ($result->num_rows === 0) {
       $uploadMessage = "User not found in database.";
     } else {
       $userData = $result->fetch_assoc();
       $user_id = $userData["user_id"];
 
-      // Validate file
+      // Validate MIME type
+      $finfo = finfo_open(FILEINFO_MIME_TYPE);
+      $mime = finfo_file($finfo, $_FILES["image"]["tmp_name"]);
+      finfo_close($finfo);
+
       $allowedTypes = ["image/jpeg", "image/png", "image/jfif"];
-      if (!in_array($_FILES["image"]["type"], $allowedTypes)) {
+      if (!in_array($mime, $allowedTypes)) {
         $uploadMessage = "Only JPG, PNG, and JFIF files are allowed.";
       } elseif ($_FILES["image"]["error"] !== UPLOAD_ERR_OK) {
         $uploadMessage = "File upload error.";
@@ -48,17 +53,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["title"]) && isset($_F
           mkdir($uploadDir, 0755, true);
         }
 
-        $filename = time() . "_" . basename($_FILES["image"]["name"]);
-        $targetPath = $uploadDir . $filename;
+        $extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+        $uniqueName = uniqid("img_", true) . "." . $extension;
+        $targetPath = $uploadDir . $uniqueName;
 
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetPath)) {
           $caption = $conn->real_escape_string($_POST["title"]);
 
           $stmt = $conn->prepare("INSERT INTO art_gallery (user_id, username, image, caption) VALUES (?, ?, ?, ?)");
-          $stmt->bind_param("isss", $user_id, $username, $filename, $caption);
+          $stmt->bind_param("isss", $user_id, $username, $uniqueName, $caption);
 
           if ($stmt->execute()) {
-            $uploadMessage = "Image uploaded successfully!";
+            // Set a success message in the session
+            $_SESSION["upload_success"] = "Image uploaded successfully!";
+            // Redirect to avoid resubmission
+            header("Location: " . $_SERVER["PHP_SELF"]);
+            exit;
           } else {
             $uploadMessage = "Database error. Please try again.";
           }
@@ -69,6 +79,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["title"]) && isset($_F
     }
   }
 }
+
+// Display any message set in session and then clear it
+if (isset($_SESSION["upload_success"])) {
+  $uploadMessage = $_SESSION["upload_success"];
+  unset($_SESSION["upload_success"]);
+}
+
+
 ?>
 
 <!doctype html>
