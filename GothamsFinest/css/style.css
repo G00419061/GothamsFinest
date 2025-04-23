@@ -110,13 +110,8 @@ hr {
   color: #000;
 }
 
-.logo {
-  width: 200px;
-  height: auto;
-}
-
-#logo {
-  justify-content: center;
+.logo{
+  padding-left: 35%;
 }
 
 

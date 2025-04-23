@@ -35,13 +35,16 @@ if ($conn->connect_error) {
   <div class="main">
 
     <div class="row" id="logo">
-        <div class="logo">
-          <a href="index.php">
-            <img src="img/batman logo yellow writing.png" class="img-thumbnail"
-              alt="A logo depicting a Batman silhouette with a yellow outline">
-          </a>
-        </div>  
+      <div class="logo">
+        <a href="index.php">
+          <video width="410" height="300" autoplay loop muted playsinline>
+            <source src="img/animated_logo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </a>
+      </div>
     </div>
+
 
     <div class="row">
       <div class="col-12">
